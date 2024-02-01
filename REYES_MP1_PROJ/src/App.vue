@@ -134,6 +134,7 @@
         deletePokemon,
         fetchNewPokemon
       };
+      
     }
   }
   </script>
