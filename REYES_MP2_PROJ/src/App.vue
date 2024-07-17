@@ -24,7 +24,7 @@
   
   <script>
   import { ref, computed, onMounted } from 'vue'; //onMounted for setUp() to fetch data
-  import sweet from 'sweetalert2';
+  import Swal from 'sweetalert2';
   
   export default {
     name: 'App',
@@ -65,7 +65,7 @@
       const showPokemonDetails = async (pokemon) => {
         selectedPokemon.value = pokemon;
   
-        await sweet.fire({
+        await Swal.fire({
           title: pokemon.name,
           html: `
             <img src="${pokemon.spriteUrl}" alt="${pokemon.name}" class="pokemon-sprite">
@@ -79,7 +79,7 @@
         const index = pokemonData.value.findIndex(p => p.id === pokemon.id); //find the exact pokemon to delete
         if (index !== -1) {
           pokemonData.value.splice(index, 1);
-          sweet.fire({ //objects contained in the delete modal
+          Swal.fire({ //objects contained in the delete modal
             title: 'Deleted!',
             text: `${pokemon.name} has been deleted.`,
             icon: 'success',
@@ -105,7 +105,7 @@
   
           pokemonData.value.push(newPokemon);
   
-          sweet.fire({
+          Swal.fire({
             title: 'Added!',
             text: 'New Pokémon added.',
             icon: 'success',
@@ -114,7 +114,7 @@
           });
         } catch (error) {
           console.error('Error fetching new Pokémon:', error);
-          sweet.fire({
+          Swal.fire({
             title: 'Error!',
             text: 'Failed to fetch new Pokémon.',
             icon: 'error',
